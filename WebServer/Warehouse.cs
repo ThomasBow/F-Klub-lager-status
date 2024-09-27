@@ -17,9 +17,7 @@ public class Warehouse
         {
             if (ItemExists(identifier)) throw new AlreadyExistsException();
 
-            items.Add(
-                new(identifier, name)
-            );
+            items.Add( new(identifier, name) );
         }
     }
 
@@ -45,11 +43,10 @@ public class Warehouse
     {
         lock (_locker)
         {
+            WarehouseItem item = FindItem(itemIdentifier);
+
             FindReserveInfo(guid)
-                .AddItemToReserve(
-                    FindItem(itemIdentifier),
-                    amountToReserve
-                );
+                .AddItemToReserve(item, amountToReserve);
         }
     }
 
@@ -85,9 +82,8 @@ public class Warehouse
     {
         lock (_locker)
         {
-            items.Remove(
-                FindItem(identifier)
-            );
+            WarehouseItem item = FindItem(identifier);
+            items.Remove(item);
         }
     }
 
