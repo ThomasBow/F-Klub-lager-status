@@ -2,7 +2,8 @@
 
 public class WarehouseItem
 {
-    public readonly string Identifier;
+    public string Identifier => identifier;
+    string identifier;
 
     public string Name => name;
     string name;
@@ -10,10 +11,15 @@ public class WarehouseItem
     public int Amount => amount;
     int amount;
 
+    public int AmountAddedOverTime => amountAddedOverTime;
+    int amountAddedOverTime;
+    
+    public int AmountRemovedOverTime => amountRemovedOverTime;
+    int amountRemovedOverTime;
 
     public WarehouseItem(string identifier, string? name, int amount = 0)
     {
-        Identifier = identifier;
+        this.identifier = identifier;
 
         this.name = name ?? identifier;
 

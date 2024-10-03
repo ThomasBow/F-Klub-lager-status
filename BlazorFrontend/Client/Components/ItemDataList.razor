@@ -1,0 +1,115 @@
+﻿
+@*
+<div style="text-align: center;">
+    @if (Items.Any())
+    {
+        <RadzenDataList Data=@Items TItem=@Item PageSize=@PageSize AllowPaging=@AllowPaging>
+            <Template Context="item">
+                <RadzenCard Variant="Variant.Outlined" class="rz-p-0" Style="width: 100%; overflow: hidden;">
+                    <RadzenRow>
+                        <RadzenColumn class="rz-p-4 product-title">
+                            <RadzenText TextStyle="TextStyle.H4" TagName="TagName.H5">@item.Name</RadzenText>
+                        </RadzenColumn>
+                        <RadzenColumn class="rz-p-4">
+                            <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H5">Identifier</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body2">@item.Identifier</RadzenText>
+                        </RadzenColumn>
+                        <RadzenColumn class="rz-p-4">
+                            <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H5">Stock</RadzenText>
+                            <RadzenText TextStyle="TextStyle.Body2">@item.Amount</RadzenText>
+                        </RadzenColumn>
+                        <RadzenColumn class="rz-p-4">
+                            <RadzenButton></RadzenButton>
+                        </RadzenColumn>
+                    </RadzenRow>
+                </RadzenCard>
+            </Template>
+        </RadzenDataList>
+    }
+    else
+    {
+
+        <RadzenText TextStyle="TextStyle.H4" TagName="TagName.H5">No data to show!</RadzenText>
+    }
+</div>
+
+<style>
+    .product-title {
+        min-height: 72px;
+        background-color: var(--rz-secondary-lighter);
+    }
+</style>
+*@
+
+<div>
+    @if (Items.Any())
+    {
+        <RadzenDataList Data=@Items TItem=@Item PageSize=@PageSize AllowPaging=@AllowPaging WrapItems=@WrapItems>
+            <Template Context="item">
+                <RadzenCard Variant="Variant.Outlined" Style="width: 250px;" class="rz-border-radius-3">
+
+                    <RadzenRow JustifyContent="JustifyContent.Center" Style="text-align: center;">
+
+                        <RadzenColumn>
+                            <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H5">@item.Name</RadzenText>
+                        </RadzenColumn>
+
+                    </RadzenRow>
+
+                    <RadzenStack Gap="0.5rem" Orientation="Orientation.Vertical">
+
+                        <RadzenRow JustifyContent="JustifyContent.Center" Style="text-align: center; margin-bottom: 10px;">
+
+                            <RadzenColumn>
+                                <RadzenText TextStyle="TextStyle.Body2">@item.Identifier</RadzenText>
+                            </RadzenColumn>
+
+                        </RadzenRow>
+
+                        <RadzenRow>
+
+                            <RadzenColumn>
+                                <RadzenStack Orientation="Orientation.Horizontal">
+                                    <RadzenText TextStyle="TextStyle.H6"><strong>Stock: </strong></RadzenText>
+                                    <RadzenText TextStyle="TextStyle.H6">@item.Amount</RadzenText>
+                                </RadzenStack>
+                            </RadzenColumn>
+
+                        </RadzenRow>
+
+                    </RadzenStack>
+
+                </RadzenCard>
+            </Template>
+        </RadzenDataList>
+    }
+    else
+    {
+        <RadzenText TextStyle="TextStyle.H4" TagName="TagName.H5">No data to show!</RadzenText>
+    }
+</div>
+
+<style>
+    .product-card {
+        background-color: var(--rz-secondary-lighter);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: left;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public IEnumerable<Item> Items { get; set; } = new List<Item>();
+
+    [Parameter]
+    public int PageSize { get; set; } = 10;
+
+    [Parameter]
+    public bool AllowPaging { get; set; } = true;
+
+    [Parameter]
+    public bool WrapItems { get; set; } = false;
+
+    
+}

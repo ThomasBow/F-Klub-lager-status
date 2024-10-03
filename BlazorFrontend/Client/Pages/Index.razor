@@ -1,0 +1,52 @@
+﻿
+
+
+@page "/"
+
+@inject HttpClient httpClient
+@inject IJSRuntime JS
+
+<div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <RadzenText TextStyle="TextStyle.H1">F-Klub Lager Status</RadzenText>
+    </div>
+
+    <div style="margin-left: 20px;">
+        <RadzenStack Orientation="Orientation.Horizontal">
+            <RadzenButton Shade="Shade.Lighter" Click=@GetAndSetWarehouseStatus Text="Update Status" ButtonStyle="ButtonStyle.Dark" style="margin-bottom: 20px; margin-top: 20px; margin-right: 20px;"></RadzenButton>
+            <RadzenText TextStyle="TextStyle.Button">@($"{lastChanged:dddd}, {lastChanged:dd} {lastChanged:MMMM} {lastChanged:yyyy} {lastChanged:hh.mm.ss}")</RadzenText>
+        </RadzenStack>
+    </div>
+
+    <ItemDataList Items=@items WrapItems=true></ItemDataList>
+
+    <div style="text-align: center; margin-top: 600px;">
+        <RadzenText TextStyle="TextStyle.Subtitle1">End of Page</RadzenText>
+    </div>
+
+</div>
+
+    @code {
+    DateTime lastChanged;
+    IEnumerable<Item> items = new List<Item>();
+
+    private async Task GetAndSetWarehouseStatus()
+    {
+        WarehouseStatusResponse response = await GetWarehouseStatus();
+
+        lastChanged = response.LastChanged;
+        items = response.Items;
+    }
+
+    private async Task<WarehouseStatusResponse> GetWarehouseStatus()
+    {
+        return await httpClient.GetFromJsonAsync<WarehouseStatusResponse>("http://localhost:5270/api/Warehouse") ?? new();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await GetAndSetWarehouseStatus();
+    }
+}

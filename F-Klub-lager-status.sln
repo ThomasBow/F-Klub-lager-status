@@ -5,6 +5,12 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebServer", "WebServer\WebServer.csproj", "{3F82CA42-9E3D-401F-BFAF-D311523D06EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFrontend.Server", "BlazorFrontend\Server\BlazorFrontend.Server.csproj", "{845FBC9D-6470-4F4E-84C8-6D5DCD2BFF52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFrontend.Client", "BlazorFrontend\Client\BlazorFrontend.Client.csproj", "{9554C516-526D-4B4D-8829-253F8FA28DE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFrontend.Shared", "BlazorFrontend\Shared\BlazorFrontend.Shared.csproj", "{9DED3626-E441-4008-8A76-BE19F103C015}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{3F82CA42-9E3D-401F-BFAF-D311523D06EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F82CA42-9E3D-401F-BFAF-D311523D06EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F82CA42-9E3D-401F-BFAF-D311523D06EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845FBC9D-6470-4F4E-84C8-6D5DCD2BFF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845FBC9D-6470-4F4E-84C8-6D5DCD2BFF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845FBC9D-6470-4F4E-84C8-6D5DCD2BFF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845FBC9D-6470-4F4E-84C8-6D5DCD2BFF52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9554C516-526D-4B4D-8829-253F8FA28DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9554C516-526D-4B4D-8829-253F8FA28DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9554C516-526D-4B4D-8829-253F8FA28DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9554C516-526D-4B4D-8829-253F8FA28DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DED3626-E441-4008-8A76-BE19F103C015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DED3626-E441-4008-8A76-BE19F103C015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DED3626-E441-4008-8A76-BE19F103C015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DED3626-E441-4008-8A76-BE19F103C015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

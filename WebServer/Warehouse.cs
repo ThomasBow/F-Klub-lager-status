@@ -9,7 +9,11 @@ public class Warehouse
 
     List<ReserveInfo> reserveInfos = new();
 
+    public List<WarehouseItem> Items => new(items);
     List<WarehouseItem> items = new();
+
+    public void OnChangeMade() => lastChange = DateTime.Now;
+    public DateTime lastChange = DateTime.Now;
 
     public void AddNewItem(string identifier, string name)
     {
@@ -18,6 +22,8 @@ public class Warehouse
             if (ItemExists(identifier)) throw new AlreadyExistsException();
 
             items.Add( new(identifier, name) );
+
+            OnChangeMade();
         }
     }
 
@@ -27,6 +33,8 @@ public class Warehouse
         {
             FindItem(identifier)
                 .AddStock(amount);
+
+            OnChangeMade();
         }
     }
 
@@ -36,6 +44,8 @@ public class Warehouse
         {
             FindItem(identifier)
                 .SubtractStock(amount);
+
+            OnChangeMade();
         }
     }
 
@@ -47,6 +57,8 @@ public class Warehouse
 
             FindReserveInfo(guid)
                 .AddItemToReserve(item, amountToReserve);
+
+            OnChangeMade();
         }
     }
 
@@ -56,6 +68,8 @@ public class Warehouse
         {
             FindReserveInfo(guid)
                 .AddAmountToReservedStock(amount, itemIdentifier);
+
+            OnChangeMade();
         }
     }
 
@@ -65,6 +79,8 @@ public class Warehouse
         {
             FindReserveInfo(guid)
                 .SubtractAmountFromReservedStock(amount, itemIdentifier);
+
+            OnChangeMade();
         }
     }
 
@@ -74,6 +90,8 @@ public class Warehouse
         {
             FindReserveInfo(guid)
                 .RemoveItemFromReserve(itemIdentifier);
+
+            OnChangeMade();
         }
             
     }
@@ -84,6 +102,8 @@ public class Warehouse
         {
             WarehouseItem item = FindItem(identifier);
             items.Remove(item);
+
+            OnChangeMade();
         }
     }
 
